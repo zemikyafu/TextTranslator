@@ -1,0 +1,1 @@
+Python text translator from one language to another using Azure and AWS cognitive services

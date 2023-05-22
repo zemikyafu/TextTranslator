@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: texttranslator-deplyoment
+  name: texttranslator-deplyoment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: texttranslator-deplyoment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: texttranslator-deplyoment
+    spec:
+      containers:
+      - image: docker.io/library/texttranslator
+        name: texttranslator
+        resources: {}
+        imagePullPolicy: Never
+status: {}
