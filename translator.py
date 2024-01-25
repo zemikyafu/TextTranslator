@@ -11,12 +11,8 @@ CORS(app)
 
 @app.route("/api/translate", methods=["POST"])
 def translate():
-    # data=flask.request.data
-    # print("data")
-    # print(data)
+
     datajson=flask.request.json
-    print("datajson")
-    print(datajson)
     fromLang = datajson['from']
     toLang= datajson['to']
     text =datajson['inputText']
@@ -25,16 +21,11 @@ def translate():
    #check if Azure service respose is okay , if not translation service from AWS
     if(response.status_code==200):
         response = response.json()
-        print("from Azure")
-        print(response[0])
         translations = response[0]['translations']
-        print(translations[0])
 
         return flask.jsonify(translations[0])
     else :
         response= translateAWS.translateWithAWS(fromLang,toLang,text)
-        print(response)
-        print("from AWS")
         translations = response['text']
         return flask.jsonify(response)
             
